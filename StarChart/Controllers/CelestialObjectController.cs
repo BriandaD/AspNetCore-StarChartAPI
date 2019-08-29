@@ -42,7 +42,11 @@ namespace StarChart.Controllers
                 }
                 return Ok(celestialObj);
             }
-            return NotFound();
+            else
+            {
+                return NotFound();
+            }
+            
         }
 
         [HttpGet]
