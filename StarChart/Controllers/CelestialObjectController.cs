@@ -22,14 +22,11 @@ namespace StarChart.Controllers
         public IActionResult GetById(int id)
         {
             var celestialObj = _context.CelestialObjects.Find(id);
-            celestialObj.Satellites = _context.CelestialObjects.Where(r => r.OrbitedObjectId == id).ToList();
-
             if (celestialObj != null)
             {
-                return Ok();
-                
+                celestialObj.Satellites = _context.CelestialObjects.Where(r => r.OrbitedObjectId == id).ToList();
+                return Ok(celestialObj);
             }
-           
             return NotFound();
         }
     }
